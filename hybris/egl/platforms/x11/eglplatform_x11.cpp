@@ -253,15 +253,15 @@ extern "C" EGLBoolean x11ws_eglGetConfigAttrib(struct _EGLDisplay *display, EGLC
 	if (attribute == EGL_NATIVE_VISUAL_ID)
 	{
 		X11Display *xdpy = (X11Display *)display;
+		if (xdpy->xl_display) {
+			HYBRIS_ERROR("xl_display is null");
+			return EGL_FALSE;
+		}
 		XVisualInfo visinfo_template;
 		XVisualInfo *visinfo = NULL;
 		int visinfos_count = 0;
 
 		visinfo_template.depth = 32;
-		if (xdpy->xl_display) {
-			HYBRIS_ERROR("xl_display is null");
-			return EGL_FALSE;
-		}
 
 		visinfo = XGetVisualInfo (xdpy->xl_display,
 							VisualDepthMask,
