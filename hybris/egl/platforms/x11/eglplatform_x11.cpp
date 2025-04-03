@@ -253,7 +253,7 @@ extern "C" EGLBoolean x11ws_eglGetConfigAttrib(struct _EGLDisplay *display, EGLC
 	if (attribute == EGL_NATIVE_VISUAL_ID)
 	{
 		X11Display *xdpy = (X11Display *)display;
-		if (xdpy->xl_display) {
+		if (xdpy->xl_display == NULL) {
 			HYBRIS_ERROR("xl_display is null");
 			return EGL_FALSE;
 		}
