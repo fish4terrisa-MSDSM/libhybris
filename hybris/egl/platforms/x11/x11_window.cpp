@@ -70,7 +70,7 @@ X11NativeWindow::X11NativeWindow(Display* xl_display, Window xl_window,
     this->m_display = xl_display;
     this->m_connection = XGetXCBConnection(xl_display);
     this->m_image = 0;
-    this->m_useShm = false;
+    this->m_useShm = true;
     this->m_format = drihybris ? HAL_PIXEL_FORMAT_RGBA_8888 : HAL_PIXEL_FORMAT_BGRA_8888;
     this->m_haveDRIHybris = drihybris;
 
